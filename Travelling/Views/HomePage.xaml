@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Travelling.Models"
+             x:Class="Travelling.Views.HomePage"
+             Title="Inicio">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="refresh.png" Activated="onRefresh"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="24">
+                <Label
+                    FontSize="20"
+                    Text="Bienvenido, Carlos Manuel"
+                    LineBreakMode="TailTruncation">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Bienvenido, " TextColor="{StaticResource lbl-primary}"/>
+                            <Span Text="Carlos Manuel Gamboa Palomino" TextColor="{StaticResource lbl-secondary}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Frame>
+                    <StackLayout>
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="0" Padding="0" VerticalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Padding="0"
+                                Margin="0"
+                                FontSize="16"
+                                VerticalTextAlignment="Center"
+                                TextColor="{StaticResource lbl-primary}"
+                                FontAttributes="Bold"
+                                LineBreakMode="TailTruncation"
+                                Text="Lugares top que debes visitar"/>
+                            <Frame
+                                ClassId="DestinationPage"
+                                Grid.Row="0" Grid.Column="1"
+                                Padding="10, 5"
+                                VerticalOptions="Center"
+                                BackgroundColor="{StaticResource success-outline}"
+                                BorderColor="{StaticResource success-outline}">
+                                <Label
+                                    FontSize="14"
+                                    TextColor="{StaticResource success}"
+                                    VerticalTextAlignment="Center"
+                                    Text="Ver todo"/>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="onWatchMoreClicked"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Grid>
+
+                        <ScrollView
+                            Margin="0, 15, 0, 0"
+                            Padding="0"
+                            Orientation="Horizontal"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Fill">
+                            <CollectionView
+                                x:Name="top_destination"
+                                HeightRequest="160"
+                                WidthRequest="1041"
+                                ItemsLayout="HorizontalList">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout
+                                            HeightRequest="160"
+                                            Padding="0, 0, 10, 0">
+                                            <Frame
+                                                Padding="0"
+                                                HeightRequest="120"
+                                                WidthRequest="200">
+                                                <Image
+                                                    ClassId="{Binding Id}"
+                                                    HeightRequest="120"
+                                                    WidthRequest="200"
+                                                    Aspect="AspectFill"
+                                                    Source="{Binding Image}">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="onImageClicked"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </Frame>
+                                            <Grid ColumnSpacing="0" RowSpacing="0" Margin="0" Padding="0" VerticalOptions="Center" HeightRequest="33">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="1*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Row="0" Grid.Column="0"
+                                                    Padding="0"
+                                                    Margin="0"
+                                                    FontSize="14"
+                                                    WidthRequest="0"
+                                                    VerticalTextAlignment="Center"
+                                                    TextColor="{StaticResource lbl-primary}"
+                                                    LineBreakMode="TailTruncation"
+                                                    Text="{Binding Name}"/>
+                                                <Frame
+                                                    ClassId="{Binding Id}"
+                                                    Grid.Row="0" Grid.Column="1"
+                                                    Padding="10, 5"
+                                                    VerticalOptions="Center"
+                                                    BackgroundColor="{StaticResource dark}">
+                                                    <Label
+                                                        FontSize="14"
+                                                        TextColor="{StaticResource bg-container}"
+                                                        VerticalTextAlignment="Center"
+                                                        Text="Detalles"/>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="onDetailClicked"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </Grid>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </ScrollView>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout>
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="0" Padding="0" VerticalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Padding="0"
+                                Margin="0"
+                                FontSize="16"
+                                VerticalTextAlignment="Center"
+                                TextColor="{StaticResource lbl-primary}"
+                                FontAttributes="Bold"
+                                LineBreakMode="TailTruncation"
+                                Text="Tus lugares favoritos"/>
+                            <Frame
+                                x:Name="btn_fav"
+                                ClassId="FavouritePage"
+                                Grid.Row="0" Grid.Column="1"
+                                Padding="10, 5"
+                                VerticalOptions="Center"
+                                BackgroundColor="{StaticResource success-outline}"
+                                BorderColor="{StaticResource success-outline}">
+                                <Label
+                                    FontSize="14"
+                                    TextColor="{StaticResource success}"
+                                    VerticalTextAlignment="Center"
+                                    Text="Ver todo"/>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="onWatchMoreClicked"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Grid>
+                        <Label
+                            x:Name="lbl_fav"
+                            Margin="0, 15, 0, 0"
+                            HeightRequest="160"
+                            TextColor="{StaticResource lbl-outline}"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="-- Aún no tienes lugares favoritos --"/>
+                        <ScrollView
+                            x:Name="sv_fav"
+                            IsVisible="False"
+                            Margin="0, 15, 0, 0"
+                            Padding="0"
+                            Orientation="Horizontal"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Fill">
+                            <CollectionView
+                                x:Name="fav_destination"
+                                HeightRequest="160"
+                                WidthRequest="1041"
+                                ItemsLayout="HorizontalList">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout
+                                            HeightRequest="160"
+                                            Padding="0, 0, 10, 0">
+                                            <Frame
+                                                Padding="0"
+                                                HeightRequest="120"
+                                                WidthRequest="200">
+                                                <Image
+                                                    ClassId="{Binding Id}"
+                                                    HeightRequest="120"
+                                                    WidthRequest="200"
+                                                    Aspect="AspectFill"
+                                                    Source="{Binding Image}">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="onImageClicked"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </Frame>
+                                            <Grid ColumnSpacing="0" RowSpacing="0" Margin="0" Padding="0" VerticalOptions="Center" HeightRequest="33">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="1*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Row="0" Grid.Column="0"
+                                                    Padding="0"
+                                                    Margin="0"
+                                                    FontSize="14"
+                                                    VerticalTextAlignment="Center"
+                                                    TextColor="{StaticResource lbl-primary}"
+                                                    LineBreakMode="TailTruncation"
+                                                    Text="{Binding Name}"/>
+                                                <Frame
+                                                    ClassId="{Binding Id}"
+                                                    Grid.Row="0" Grid.Column="1"
+                                                    Padding="15, 5"
+                                                    VerticalOptions="Center"
+                                                    BackgroundColor="{StaticResource dark}">
+                                                    <Label
+                                                        FontSize="14"
+                                                        FontAttributes="Bold"
+                                                        TextColor="{StaticResource bg-container}"
+                                                        VerticalTextAlignment="Center"
+                                                        Text="⁝"/>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="onMenuClicked"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </Grid>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </ScrollView>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout>
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="0" Padding="0" VerticalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Padding="0"
+                                Margin="0"
+                                FontSize="16"
+                                VerticalTextAlignment="Center"
+                                TextColor="{StaticResource lbl-primary}"
+                                FontAttributes="Bold"
+                                LineBreakMode="TailTruncation"
+                                Text="Lugares que visitaste"/>
+                            <Frame
+                                x:Name="btn_visited"
+                                ClassId="VisitedPage"
+                                Grid.Row="0" Grid.Column="1"
+                                Padding="10, 5"
+                                VerticalOptions="Center"
+                                BackgroundColor="{StaticResource success-outline}"
+                                BorderColor="{StaticResource success-outline}">
+                                <Label
+                                    FontSize="14"
+                                    TextColor="{StaticResource success}"
+                                    VerticalTextAlignment="Center"
+                                    Text="Ver todo"/>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="onWatchMoreClicked"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Grid>
+                        <Label
+                            x:Name="lbl_visited"
+                            Margin="0, 15, 0, 0"
+                            HeightRequest="160"
+                            TextColor="{StaticResource lbl-outline}"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="-- Aún no has visitado lugares --"/>
+                        <ScrollView
+                            x:Name="sv_visited"
+                            IsVisible="False"
+                            Margin="0, 15, 0, 0"
+                            Padding="0"
+                            Orientation="Horizontal"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Fill">
+                            <CollectionView
+                                x:Name="visited_destination"
+                                HeightRequest="160"
+                                WidthRequest="1041"
+                                ItemsLayout="HorizontalList">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout
+                                            HeightRequest="160"
+                                            Padding="0, 0, 10, 0">
+                                            <Frame
+                                                Padding="0"
+                                                HeightRequest="120"
+                                                WidthRequest="200">
+                                                <Image
+                                                    ClassId="{Binding Id}"
+                                                    HeightRequest="120"
+                                                    WidthRequest="200"
+                                                    Aspect="AspectFill"
+                                                    Source="{Binding Image}">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="onImageClicked"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </Frame>
+                                            <Grid ColumnSpacing="0" RowSpacing="0" Margin="0" Padding="0" VerticalOptions="Center" HeightRequest="33">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="1*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Row="0" Grid.Column="0"
+                                                    Padding="0"
+                                                    Margin="0"
+                                                    FontSize="14"
+                                                    VerticalTextAlignment="Center"
+                                                    TextColor="{StaticResource lbl-primary}"
+                                                    LineBreakMode="TailTruncation"
+                                                    Text="{Binding Name}"/>
+                                                <Frame
+                                                    Grid.Row="0" Grid.Column="1"
+                                                    Padding="10, 5"
+                                                    VerticalOptions="Center"
+                                                    BackgroundColor="{StaticResource dark}">
+                                                    <Label
+                                                        FontSize="14"
+                                                        TextColor="{StaticResource bg-container}"
+                                                        VerticalTextAlignment="Center"
+                                                        Text="Info"/>
+                                                </Frame>
+                                            </Grid>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </ScrollView>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

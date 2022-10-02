@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:view="clr-namespace:Travelling.Views"
+    xmlns:component="clr-namespace:Travelling.Components"
+    x:Class="Travelling.Menu">
+
+    <FlyoutPage.Resources>
+
+    </FlyoutPage.Resources>
+
+    <FlyoutPage.Flyout>
+        <ContentPage Title="Menu">
+            <ScrollView Padding="0" BackgroundColor="{StaticResource bg-container}">
+                <StackLayout Spacing="0">
+                    <StackLayout
+                        BackgroundColor="{StaticResource bg-body}">
+                        <Image
+                            Source="https://cut.sode.me/4d603ff4"
+                            HeightRequest="200"
+                            Aspect="AspectFill"/>
+                        <Label
+                            Margin="24, -90, 24, 24"
+                            FontSize="26"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource bg-container}"
+                            Text="Travelling"/>
+                        <Label
+                            Margin="24, -25, 24, 24"
+                            FontSize="14"
+                            FontAttributes="None"
+                            TextColor="{StaticResource bg-body}"
+                            Text="By: SoDe World"/>
+                    </StackLayout>
+                    <StackLayout Padding="24" VerticalOptions="Center">
+                        <Label
+                            Margin="0, 0, 0, 6"
+                            TextColor="{StaticResource lbl-tertiary}"
+                            TextDecorations="None"
+                            FontAttributes="None"
+                            FontSize="15.2"
+                            Text="RUTAS Y DESTINOS"/>
+                        <CollectionView
+                            x:Name="collectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="onMenuClicked"
+                            HeightRequest="400">
+                            <CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type component:FlyoutItem}">
+                                    <component:FlyoutItem
+                                        Title="Inicio"
+                                        IconSource="home.png"
+                                        TargetPage="{x:Type view:HomePage}"/>
+                                    <component:FlyoutItem
+                                        Title="Destinos turísticos"
+                                        IconSource="pinflat.png"
+                                        TargetPage="{x:Type view:DestinationPage}"/>
+                                    <component:FlyoutItem
+                                        Title="Lugares Favoritos"
+                                        IconSource="star.png"
+                                        TargetPage="{x:Type view:FavouritePage}"/>
+                                    <component:FlyoutItem
+                                        Title="Mis reservas"
+                                        IconSource="destinationflat.png"
+                                        TargetPage="{x:Type view:ReservationPage}"/>
+                                    <component:FlyoutItem
+                                        Title="Lugares visitados"
+                                        IconSource="check.png"
+                                        TargetPage="{x:Type view:VisitedPage}"/>
+                                    <component:FlyoutItem
+                                        Title="Acerca de"
+                                        IconSource="info.png"
+                                        TargetPage="{x:Type view:AboutPage}"/>
+                                </x:Array>
+                            </CollectionView.ItemsSource>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout
+                                        x:DataType="component:FlyoutItem"
+                                        Margin="10"
+                                        Orientation="Horizontal">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="{StaticResource primary-outline}" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState Name="Normal">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Image
+                                            Margin="10, 0"
+                                            HeightRequest="25"
+                                            WidthRequest="25"
+                                            Source="{Binding IconSource}"
+                                            VerticalOptions="FillAndExpand"/>
+                                        <Label
+                                            FontSize="15.2"
+                                            TextColor="{StaticResource lbl-secondary}"
+                                            VerticalTextAlignment="Center"
+                                            Text="{Binding Title}"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+
+    <FlyoutPage.Detail>
+        <NavigationPage x:Name="_navigationPage">
+            <x:Arguments>
+                <view:HomePage />
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+
+</FlyoutPage>

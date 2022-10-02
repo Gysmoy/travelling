@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Name="contentPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Travelling.Modals.ImageModal"
+    Title="">
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="{StaticResource dark}">
+            <Image
+                x:Name="image"
+                Source=""
+                Aspect="AspectFit"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="SizeProportional"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

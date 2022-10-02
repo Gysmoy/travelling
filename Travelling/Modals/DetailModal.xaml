@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:Travelling.Models"
+    x:Class="Travelling.Modals.DetailModal"
+    x:DataType="model:DestinationModel"
+    Title="{Binding Name}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="toolbarItem" IconImageSource="star_fill_0.png" Activated="onFavouriteClicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView Padding="0">
+            <StackLayout Padding="0" BackgroundColor="{StaticResource bg-container}">
+                <Image
+                    Margin="0"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="250"
+                    Aspect="AspectFill"
+                    Source="{Binding Image}"/>
+                <StackLayout Padding="24" Spacing="24">
+                    <Label
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource lbl-primary}"
+                        Text="Reseña"/>
+                    <Label
+                        TextColor="{StaticResource lbl-secondary}"
+                        Text="{Binding Summary}"/>
+                    <Label
+                        TextColor="{StaticResource lbl-secondary}"
+                        Text="{Binding Review}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

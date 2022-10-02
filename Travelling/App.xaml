@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Travelling.App">
+    <Application.Resources>
+        
+        <ResourceDictionary>
+
+            <Color x:Key="bg-body">#ebeff2</Color>
+            <Color x:Key="bg-container">#ffffff</Color>
+            <Color x:Key="bg-input">#ffffff</Color>
+
+            <Color x:Key="border-input">#ced4da</Color>
+
+            <Color x:Key="lbl-primary">#343a40</Color>
+            <Color x:Key="lbl-secondary">#6c757d</Color>
+            <Color x:Key="lbl-tertiary">#6e768e</Color>
+            <Color x:Key="lbl-outline">#98a6ad</Color>
+
+            <!-- Colors for buttons -->
+            <Color x:Key="primary">#71b6f9</Color>
+            <Color x:Key="primary-outline">#3371b6f9</Color>
+
+            <Color x:Key="success">#10c469</Color>
+            <Color x:Key="success-outline">#3310c469</Color>
+
+            <Color x:Key="info">#35b8e0</Color>
+            <Color x:Key="info-outline">#3335b8e0</Color>
+
+            <Color x:Key="warning">#f9c851</Color>
+            <Color x:Key="warning-outline">#33f9c851</Color>
+
+            <Color x:Key="danger">#ff5b5b</Color>
+            <Color x:Key="danger-outline">#33ff5b5b</Color>
+
+            <Color x:Key="dark">#323a46</Color>
+            <Color x:Key="dark-outline">#33323a46</Color>
+
+            <Color x:Key="pink">#ff8acc</Color>
+            <Color x:Key="pink-outline">#33ff8acc</Color>
+
+            <Color x:Key="secondary">#6c757d</Color>
+            <Color x:Key="secondary-outline">#336c757d</Color>
+
+        </ResourceDictionary>
+
+        <Style TargetType="ScrollView">
+            <Setter Property="BackgroundColor" Value="{StaticResource bg-body}"/>
+            <Setter Property="Padding" Value="24"/>
+        </Style>
+
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{StaticResource bg-container}"/>
+            <Setter Property="Padding" Value="24"/>
+            <Setter Property="CornerRadius" Value="4" />
+        </Style>
+
+    </Application.Resources>
+</Application>
