@@ -18,5 +18,10 @@ namespace Travelling.Modals
             InitializeComponent();
             BindingContext = _destination = destination;
         }
+
+        private void onCloseClicked(object sender, EventArgs e)
+        {
+            //Navigation.PopModalAsync();
+        }
     }
 }

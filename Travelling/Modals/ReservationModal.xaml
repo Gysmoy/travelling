@@ -24,8 +24,12 @@
             <Button
                 CornerRadius="25"
                 ImageSource="arrow_down.png"
+                Padding="0,5,0,0"
+                BackgroundColor="{StaticResource secondary-outline}"
+                TextColor="{StaticResource bg-container}"
                 AbsoluteLayout.LayoutBounds="5,5,45,45"
-                AbsoluteLayout.LayoutFlags="None"/>
+                AbsoluteLayout.LayoutFlags="None"
+                Clicked="onCloseClicked"/>
             <ScrollView Padding="0"
                 AbsoluteLayout.LayoutBounds="0,55,1,1"
                 AbsoluteLayout.LayoutFlags="SizeProportional">
