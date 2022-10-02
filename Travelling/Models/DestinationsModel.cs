@@ -27,7 +27,7 @@ namespace Travelling.Models
                 );
                 try
                 {
-                    data = request.DownloadString("https://sode.me/locations.php");
+                    data = request.DownloadString("https://raw.githubusercontent.com/Gysmoy/travelling/master/Travelling/Sources/locations.json");
                 } catch
                 {
                     data = "[]";

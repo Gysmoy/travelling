@@ -10,7 +10,6 @@ namespace Travelling
         public App()
         {
             InitializeComponent();
-            gCookie.clean("destinations");
             MainPage = new Menu();
         }
 
