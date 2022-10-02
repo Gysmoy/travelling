@@ -11,9 +11,9 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <AbsoluteLayout>
-        <ScrollView Padding="0"
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="SizeProportional">
+            <ScrollView Padding="0"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="SizeProportional">
             
                 <StackLayout Padding="0" BackgroundColor="{StaticResource bg-container}">
                     <Image

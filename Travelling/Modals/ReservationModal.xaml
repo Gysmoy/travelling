@@ -3,10 +3,86 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Travelling.Modals.ReservationModal">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <AbsoluteLayout>
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource dark}"
+                CornerRadius="0"
+                AbsoluteLayout.LayoutBounds="0,0,1,55"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+                <Label
+                    FontSize="16"
+                    TextColor="{StaticResource bg-container}"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Text="Reservar"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Button
+                CornerRadius="25"
+                ImageSource="arrow_down.png"
+                AbsoluteLayout.LayoutBounds="5,5,45,45"
+                AbsoluteLayout.LayoutFlags="None"/>
+            <ScrollView Padding="0"
+                AbsoluteLayout.LayoutBounds="0,55,1,1"
+                AbsoluteLayout.LayoutFlags="SizeProportional">
+
+                <StackLayout Padding="0" BackgroundColor="{StaticResource bg-container}">
+                    <Image
+                        Margin="0"
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="250"
+                        Aspect="AspectFill"
+                        Source="{Binding Image}"/>
+                    <StackLayout Padding="24" Spacing="24">
+                        <StackLayout>
+                            <Label
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource lbl-primary}"
+                                Text="Reseña"/>
+                            <Label
+                                TextColor="{StaticResource lbl-secondary}"
+                                Text="{Binding Summary}"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource lbl-primary}"
+                                Text="¿Porque deberías ir?"/>
+                            <Label
+                                TextColor="{StaticResource lbl-secondary}"
+                                Text="{Binding Summary}"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource lbl-primary}"
+                                Text="Ubicación"/>
+                            <Label
+                                TextColor="{StaticResource lbl-secondary}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Region}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding Province}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding City}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding Location}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
