@@ -10,28 +10,80 @@
         <ToolbarItem x:Name="toolbarItem" IconImageSource="star_fill_0.png" Activated="onFavouriteClicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView Padding="0">
-            <StackLayout Padding="0" BackgroundColor="{StaticResource bg-container}">
-                <Image
-                    Margin="0"
-                    HorizontalOptions="FillAndExpand"
-                    HeightRequest="250"
-                    Aspect="AspectFill"
-                    Source="{Binding Image}"/>
-                <StackLayout Padding="24" Spacing="24">
-                    <Label
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        TextColor="{StaticResource lbl-primary}"
-                        Text="Reseña"/>
-                    <Label
-                        TextColor="{StaticResource lbl-secondary}"
-                        Text="{Binding Summary}"/>
-                    <Label
-                        TextColor="{StaticResource lbl-secondary}"
-                        Text="{Binding Review}"/>
+        <AbsoluteLayout>
+        <ScrollView Padding="0"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="SizeProportional">
+            
+                <StackLayout Padding="0" BackgroundColor="{StaticResource bg-container}">
+                    <Image
+                        Margin="0"
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="250"
+                        Aspect="AspectFill"
+                        Source="{Binding Image}"/>
+                    <StackLayout Padding="24" Spacing="24">
+                        <StackLayout>
+                            <Label
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource lbl-primary}"
+                                Text="Reseña"/>
+                            <Label
+                                TextColor="{StaticResource lbl-secondary}"
+                                Text="{Binding Summary}"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource lbl-primary}"
+                                Text="¿Porque deberías ir?"/>
+                            <Label
+                                TextColor="{StaticResource lbl-secondary}"
+                                Text="{Binding Summary}"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource lbl-primary}"
+                                Text="Ubicación"/>
+                            <Label
+                                TextColor="{StaticResource lbl-secondary}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Region}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding Province}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding City}"/>
+                                        <Span Text=", "/>
+                                        <Span Text="{Binding Location}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
                 </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource dark}"
+                CornerRadius="0"
+                AbsoluteLayout.LayoutBounds="0,1,1,55"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+                <Label
+                    FontSize="16"
+                    TextColor="{StaticResource bg-container}"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Text="Reservar"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="onReservationClicked"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

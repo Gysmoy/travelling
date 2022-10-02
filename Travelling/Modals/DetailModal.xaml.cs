@@ -30,7 +30,6 @@ namespace Travelling.Modals
         private void onFavouriteClicked(object sender, EventArgs e)
         {
             string icon = toolbarItem.IconImageSource.ToString();
-            DisplayAlert("Ícono", icon, "ok");
             if (icon.Equals("File: star_fill_0.png"))
             {
                 FavoritesModel.Add(_destination);
@@ -39,6 +38,11 @@ namespace Travelling.Modals
                 FavoritesModel.Remove(_destination.Id);
             }
             checkIfFavourite();
+        }
+
+        private void onReservationClicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new ReservationModal());
         }
     }
 }

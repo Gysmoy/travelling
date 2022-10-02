@@ -10,7 +10,7 @@ using Android.App;
 [assembly: AssemblyDescription("Aplicación móvil para Travelling-Viajes")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SoDe World")]
-[assembly: AssemblyProduct("Travelling de SoDe")]
+[assembly: AssemblyProduct("Travelling.Android")]
 [assembly: AssemblyCopyright("Todos los derechos reservados")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
