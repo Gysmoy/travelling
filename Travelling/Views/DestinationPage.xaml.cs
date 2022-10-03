@@ -20,7 +20,7 @@ namespace Travelling.Views
         {
             InitializeComponent();
             collectionView.ItemsSource = DestinationsModel.All();
-            Clipboard.SetTextAsync(JsonConvert.SerializeObject(FavoritesModel.All()));
+            // Clipboard.SetTextAsync(JsonConvert.SerializeObject(ReservationsModel.All()));
         }
 
         private void onRefresh(object sender, EventArgs e)
@@ -45,6 +45,20 @@ namespace Travelling.Views
             Image button = (Image)sender;
             string id = button.ClassId;
             Navigation.PushAsync(new ImageModal(DestinationsModel.Get(id)));
+        }
+
+        private void onDetailClicked(object sender, EventArgs e)
+        {
+            Frame button = (Frame)sender;
+            string id = button.ClassId;
+            Navigation.PushAsync(new DetailModal(DestinationsModel.Get(id)));
+        }
+
+        private void onReservationClicked(object sender, EventArgs e)
+        {
+            Frame button = (Frame)sender;
+            string id = button.ClassId;
+            Navigation.PushModalAsync(new ReservationModal(DestinationsModel.Get(id)));
         }
     }
 }

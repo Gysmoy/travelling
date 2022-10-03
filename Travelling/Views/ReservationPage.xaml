@@ -1,15 +1,87 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Travelling.Views.ReservationPage"
-             Title="Mis reservas">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:Travelling.Models"
+    x:Class="Travelling.Views.ReservationPage"
+    Title="Mis reservas">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <Label Text="Welcome to Xamarin.Forms!"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand" />
+        <RefreshView
+            x:Name="refreshView"
+            RefreshColor="{StaticResource dark}"
+            Refreshing="onRefresh"
+            IsRefreshing="False">
+            <StackLayout
+                BackgroundColor="{StaticResource bg-body}"
+                Padding="0,12,0,12">
+                <CollectionView
+                    x:Name="collectionView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="24,12" x:DataType="model:DestinationModel">
+                                <Frame
+                                    Padding="0">
+                                    <Grid ColumnSpacing="0" RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image
+                                            Grid.Row="0" Grid.Column="0"
+                                            ClassId="{Binding Id}"
+                                            Aspect="AspectFill"
+                                            HeightRequest="60"
+                                            WidthRequest="120"
+                                            HorizontalOptions="Start"
+                                            Source="{Binding Image}">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="onImageClicked"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <StackLayout
+                                            Grid.Row="0" Grid.Column="1"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="Center"
+                                            Padding="12">
+                                            <Label
+                                                FontSize="16"
+                                                FontAttributes="Bold"
+                                                TextColor="{StaticResource lbl-primary}"
+                                                LineBreakMode="TailTruncation"
+                                                Text="{Binding Name}"/>
+                                            <Label
+                                                FontSize="14"
+                                                FontAttributes="None"
+                                                TextColor="{StaticResource lbl-secondary}"
+                                                Text="{Binding Date}"/>
+                                        </StackLayout>
+                                        <Frame
+                                            Grid.Row="0" Grid.Column="2"
+                                            ClassId="{Binding Id}"
+                                            Margin="12"
+                                            Padding="12, 6"
+                                            BorderColor="{StaticResource danger-outline}"
+                                            BackgroundColor="{StaticResource danger-outline}"
+                                            HasShadow="False"
+                                            VerticalOptions="Center">
+                                            <Label
+                                                FontSize="16"
+                                                FontAttributes="Bold"
+                                                TextColor="{StaticResource danger}"
+                                                VerticalTextAlignment="Center"
+                                                Text="╳"/>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="onRemoveClicked"/>
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
-        </ScrollView>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

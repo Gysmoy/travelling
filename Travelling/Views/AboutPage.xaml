@@ -5,10 +5,46 @@
              Title="Acerca de">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <Label Text="Welcome to Xamarin.Forms!"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand" />
+            <StackLayout Spacing="24">
+                <Frame>
+                    <StackLayout>
+                        <Label
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource lbl-primary}"
+                            Text="Tema"/>
+                        <Label
+                            FontSize="14.4"
+                            TextColor="{StaticResource lbl-secondary}"
+                            Text="Desarrollar estrategias comunes en el desarrollo para móviles."/>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout>
+                        <Label
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource lbl-primary}"
+                            Text="Objetivo del trabajo"/>
+                        <Label
+                            FontSize="14.4"
+                            TextColor="{StaticResource lbl-secondary}"
+                            Text="Evaluar la capacidad del participante para el desarrollar una aplicación para dispositivo móvilen Android para la gestión y reserva de servicios relacionados con viajes, donde los usuariospodrán registrarse, consultar y reservar aspectos relacionados con la gestión de uno o variosviajes, así como consultar datos relevantes sobre la empresa, con el fin de aumentar lasventas de la misma."/>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout>
+                        <Label
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource lbl-primary}"
+                            Text="Planteamiento del trabajo"/>
+                        <Label
+                            FontSize="14.4"
+                            TextColor="{StaticResource lbl-secondary}"
+                            Text="Diseñar una aplicación móvil para Travelling-Viajes viene motivado por la inminentenecesidad que tiene la empresa de situarse en dicho mercado de aplicaciones,donde casi la totalidad de empresas del sector cuentan con una. Atendiendo a lasventajas de las aplicaciones móviles centradas en el sector de viajes, parece casiobligatorio la creación de una aplicación para este negocio. Proporcionaría unnuevo canal de venta, un producto nuevo y diferente a modo de escaparate,además de generar una nueva imagen de marca aprovechando la tecnología,diferenciando y empujando el negocio a un bajo costo."/>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

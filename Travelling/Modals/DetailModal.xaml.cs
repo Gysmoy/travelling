@@ -42,7 +42,7 @@ namespace Travelling.Modals
 
         private void onReservationClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ReservationModal(_destination));
+            Navigation.PushModalAsync(new ReservationModal(_destination));
         }
     }
 }

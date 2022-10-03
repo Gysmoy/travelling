@@ -18,5 +18,16 @@ namespace Travelling.Models
         public string City { get; set; }
         public string[] Cities { get; set; }
         public string Location { get; set; }
+        public decimal Price { get; set; }
+
+        // Atributos de reserva
+        public DateTime Date { get; set; }
+        public int Quantity { get; set; }
+        public decimal Total { get; set; }
+
+        public DestinationModel ()
+        {
+            this.Price = (decimal) 25.00;
+        }
     }
 }

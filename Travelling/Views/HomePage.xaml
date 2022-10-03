@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="24">
-                <Label
+                <!--Label
                     FontSize="20"
                     Text="Bienvenido, Carlos Manuel"
                     LineBreakMode="TailTruncation">
@@ -20,7 +20,7 @@
                             <Span Text="Carlos Manuel Gamboa Palomino" TextColor="{StaticResource lbl-secondary}"/>
                         </FormattedString>
                     </Label.FormattedText>
-                </Label>
+                </Label-->
                 <Frame>
                     <StackLayout>
                         <Grid ColumnSpacing="0" RowSpacing="0" Margin="0" Padding="0" VerticalOptions="Center">
@@ -111,16 +111,17 @@
                                                 <Frame
                                                     ClassId="{Binding Id}"
                                                     Grid.Row="0" Grid.Column="1"
-                                                    Padding="10, 5"
+                                                    Padding="15, 5"
                                                     VerticalOptions="Center"
                                                     BackgroundColor="{StaticResource dark}">
                                                     <Label
                                                         FontSize="14"
+                                                        FontAttributes="Bold"
                                                         TextColor="{StaticResource bg-container}"
                                                         VerticalTextAlignment="Center"
-                                                        Text="Detalles"/>
+                                                        Text="⁝"/>
                                                     <Frame.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="onDetailClicked"/>
+                                                        <TapGestureRecognizer Tapped="onDestinationMenuClicked"/>
                                                     </Frame.GestureRecognizers>
                                                 </Frame>
                                             </Grid>
@@ -223,6 +224,7 @@
                                                     Padding="0"
                                                     Margin="0"
                                                     FontSize="14"
+                                                    WidthRequest="0"
                                                     VerticalTextAlignment="Center"
                                                     TextColor="{StaticResource lbl-primary}"
                                                     LineBreakMode="TailTruncation"
@@ -240,7 +242,7 @@
                                                         VerticalTextAlignment="Center"
                                                         Text="⁝"/>
                                                     <Frame.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="onMenuClicked"/>
+                                                        <TapGestureRecognizer Tapped="onFavMenuClicked"/>
                                                     </Frame.GestureRecognizers>
                                                 </Frame>
                                             </Grid>
@@ -336,28 +338,17 @@
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="1*"/>
-                                                    <ColumnDefinition Width="Auto"/>
                                                 </Grid.ColumnDefinitions>
                                                 <Label
                                                     Grid.Row="0" Grid.Column="0"
                                                     Padding="0"
                                                     Margin="0"
                                                     FontSize="14"
+                                                    WidthRequest="0"
                                                     VerticalTextAlignment="Center"
                                                     TextColor="{StaticResource lbl-primary}"
                                                     LineBreakMode="TailTruncation"
                                                     Text="{Binding Name}"/>
-                                                <Frame
-                                                    Grid.Row="0" Grid.Column="1"
-                                                    Padding="10, 5"
-                                                    VerticalOptions="Center"
-                                                    BackgroundColor="{StaticResource dark}">
-                                                    <Label
-                                                        FontSize="14"
-                                                        TextColor="{StaticResource bg-container}"
-                                                        VerticalTextAlignment="Center"
-                                                        Text="Info"/>
-                                                </Frame>
                                             </Grid>
                                         </StackLayout>
                                     </DataTemplate>

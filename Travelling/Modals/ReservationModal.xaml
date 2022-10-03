@@ -16,7 +16,7 @@
                     FontAttributes="Bold"
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"
-                    Text="Reservar"/>
+                    Text="Formulario de reservación"/>
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer/>
                 </Frame.GestureRecognizers>
@@ -27,66 +27,99 @@
                 Padding="0,5,0,0"
                 BackgroundColor="{StaticResource secondary-outline}"
                 TextColor="{StaticResource bg-container}"
-                AbsoluteLayout.LayoutBounds="5,5,45,45"
+                AbsoluteLayout.LayoutBounds="7.5,7.5,40,40"
                 AbsoluteLayout.LayoutFlags="None"
                 Clicked="onCloseClicked"/>
-            <ScrollView Padding="0"
+            <ScrollView Padding="24"
                 AbsoluteLayout.LayoutBounds="0,55,1,1"
                 AbsoluteLayout.LayoutFlags="SizeProportional">
-
-                <StackLayout Padding="0" BackgroundColor="{StaticResource bg-container}">
-                    <Image
-                        Margin="0"
-                        HorizontalOptions="FillAndExpand"
-                        HeightRequest="250"
-                        Aspect="AspectFill"
-                        Source="{Binding Image}"/>
-                    <StackLayout Padding="24" Spacing="24">
+                <StackLayout
+                    Spacing="24"
+                    BackgroundColor="{StaticResource bg-body}">
+                    <Frame>
                         <StackLayout>
                             <Label
                                 FontSize="16"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource lbl-primary}"
-                                Text="Reseña"/>
-                            <Label
                                 TextColor="{StaticResource lbl-secondary}"
-                                Text="{Binding Summary}"/>
+                                Text="Fecha de la reservación"/>
+                            <Label
+                                FontSize="14"
+                                TextColor="{StaticResource lbl-tertiary}"
+                                Text="Ingrese una fecha para la reservación"/>
+                            <Frame
+                                Margin="0, 10, 0, 0"
+                                Padding="12, 3"
+                                BorderColor="{StaticResource border-input}"
+                                HasShadow="False">
+                                <DatePicker
+                                    x:Name="entry_date"
+                                    FontSize="14.4"
+                                    TextColor="{StaticResource lbl-secondary}"/>
+                            </Frame>
                         </StackLayout>
+                    </Frame>
+                    <Frame>
                         <StackLayout>
                             <Label
                                 FontSize="16"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource lbl-primary}"
-                                Text="¿Porque deberías ir?"/>
-                            <Label
                                 TextColor="{StaticResource lbl-secondary}"
-                                Text="{Binding Summary}"/>
-                        </StackLayout>
-                        <StackLayout>
+                                Text="¿Cuántas personas asistirán?"/>
                             <Label
-                                FontSize="16"
-                                FontAttributes="Bold"
-                                TextColor="{StaticResource lbl-primary}"
-                                Text="Ubicación"/>
-                            <Label
-                                TextColor="{StaticResource lbl-secondary}">
+                                FontSize="14"
+                                TextColor="{StaticResource lbl-tertiary}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding Region}"/>
-                                        <Span Text=", "/>
-                                        <Span Text="{Binding Province}"/>
-                                        <Span Text=", "/>
-                                        <Span Text="{Binding City}"/>
-                                        <Span Text=", "/>
-                                        <Span Text="{Binding Location}"/>
+                                        <Span Text="Ingrese el número de personas (S/. "/>
+                                        <Span Text="{Binding Price}"/>
+                                        <Span Text=" c/u)"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Frame
+                                Margin="0, 10, 0, 0"
+                                Padding="12, 3"
+                                BorderColor="{StaticResource border-input}"
+                                HasShadow="False">
+                                <Entry
+                                    x:Name="entry_quantity"
+                                    Text="0"
+                                    FontSize="14.4"
+                                    Keyboard="Numeric"
+                                    TextChanged="onQuantityChanged"
+                                    TextColor="{StaticResource lbl-secondary}"/>
+                            </Frame>
                         </StackLayout>
-                    </StackLayout>
+                    </Frame>
                 </StackLayout>
             </ScrollView>
-            
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource success}"
+                CornerRadius="0"
+                BorderColor="{StaticResource success}"
+                AbsoluteLayout.LayoutBounds="0,1,1,55"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+                <Label
+                    FontSize="16"
+                    TextColor="{StaticResource bg-container}"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Text="Realizar reservación (S/. 00.00)">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Realizar reservación (S/. "/>
+                            <Span x:Name="lbl_total" Text="00.00"/>
+                            <Span Text=")"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="onReservationClicked"/>
+                </Frame.GestureRecognizers>
+            </Frame>
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

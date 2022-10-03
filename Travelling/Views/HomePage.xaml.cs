@@ -43,10 +43,18 @@ namespace Travelling.Views
             }
 
             // Visiteds initializer
-            string visiteds = (string)gCookie.get("visiteds");
-            if (visiteds != null)
+            List<DestinationModel> reservations = ReservationsModel.All();
+            List<DestinationModel> visiteds = new List<DestinationModel>();
+            foreach (DestinationModel reservation in reservations)
             {
-                visited_destination.ItemsSource = JsonConvert.DeserializeObject<List<DestinationModel>>(visiteds);
+                if (reservation.Date < DateTime.Now)
+                {
+                    visiteds.Add(reservation);
+                }
+            }
+            if (visiteds.Count() > 0)
+            {
+                visited_destination.ItemsSource = visiteds;
                 lbl_visited.IsVisible = false;
                 btn_visited.IsVisible = true;
                 sv_visited.IsVisible = true;
@@ -86,7 +94,7 @@ namespace Travelling.Views
             Navigation.PushAsync(new DetailModal(DestinationsModel.Get(id)));
         }
 
-        private async void onMenuClicked(object sender, EventArgs e)
+        private async void onFavMenuClicked(object sender, EventArgs e)
         {
             string action = await DisplayActionSheet("¿Que deseas hacer?", "Cancelar", null, "Ver detalles", "Reservar", "Quitar");
             switch (action)
@@ -94,9 +102,30 @@ namespace Travelling.Views
                 case "Ver detalles":
                     onDetailClicked(sender, null);
                     break;
+                case "Reservar":
+                    await Navigation.PushModalAsync(new ReservationModal(
+                        DestinationsModel.Get(((Frame)sender).ClassId)
+                    ));
+                    break;
                 case "Quitar":
                     FavoritesModel.Remove(((Frame)sender).ClassId);
                     onRefresh();
+                    break;
+            }
+        }
+
+        private async void onDestinationMenuClicked(object sender, EventArgs e)
+        {
+            string action = await DisplayActionSheet("¿Que deseas hacer?", "Cancelar", null, "Ver detalles", "Reservar");
+            switch (action)
+            {
+                case "Ver detalles":
+                    onDetailClicked(sender, null);
+                    break;
+                case "Reservar":
+                    await Navigation.PushModalAsync(new ReservationModal(
+                        DestinationsModel.Get(((Frame)sender).ClassId)
+                    ));
                     break;
             }
         }

@@ -90,6 +90,7 @@
                                         </Image>
 
                                         <Frame
+                                            ClassId="{Binding Id}"
                                             Grid.Row="1" Grid.Column="1"
                                             Margin="0, 36, 0, 0"
                                             Padding="12,6"
@@ -99,8 +100,12 @@
                                             <Label
                                                 TextColor="{StaticResource bg-container}"
                                                 Text="Reservar"/>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="onReservationClicked"/>
+                                            </Frame.GestureRecognizers>
                                         </Frame>
                                         <Frame
+                                            ClassId="{Binding Id}"
                                             Grid.Row="2" Grid.Column="1"
                                             Margin="0, 0, 0, 36"
                                             Padding="12,6"
@@ -111,6 +116,9 @@
                                             <Label
                                                 TextColor="{StaticResource primary}"
                                                 Text="Detalles"/>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="onDetailClicked"/>
+                                            </Frame.GestureRecognizers>
                                         </Frame>
 
                                     </Grid>
