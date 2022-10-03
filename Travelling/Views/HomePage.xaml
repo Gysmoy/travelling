@@ -10,17 +10,6 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="24">
-                <!--Label
-                    FontSize="20"
-                    Text="Bienvenido, Carlos Manuel"
-                    LineBreakMode="TailTruncation">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Bienvenido, " TextColor="{StaticResource lbl-primary}"/>
-                            <Span Text="Carlos Manuel Gamboa Palomino" TextColor="{StaticResource lbl-secondary}"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label-->
                 <Frame>
                     <StackLayout>
                         <Grid ColumnSpacing="0" RowSpacing="0" Margin="0" Padding="0" VerticalOptions="Center">

@@ -28,8 +28,9 @@
                                     <Grid ColumnSpacing="6" RowSpacing="6">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="1*"/>
-                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="40"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="2*"/>
@@ -46,7 +47,7 @@
                                         <Image
                                             ClassId="{Binding Id}"
                                             Grid.Row="1" Grid.Column="0"
-                                            Grid.RowSpan="2"
+                                            Grid.RowSpan="3"
                                             Source="{Binding Image}"
                                             VerticalOptions="FillAndExpand"
                                             Aspect="AspectFill">
@@ -58,7 +59,7 @@
                                         <Frame
                                             ClassId="{Binding Id}"
                                             Grid.Row="1" Grid.Column="1"
-                                            Margin="0, 36, 0, 0"
+                                            Margin="0"
                                             Padding="12,6"
                                             BackgroundColor="{StaticResource primary}"
                                             VerticalOptions="Center"
@@ -73,7 +74,7 @@
                                         <Frame
                                             ClassId="{Binding Id}"
                                             Grid.Row="2" Grid.Column="1"
-                                            Margin="0, 0, 0, 36"
+                                            Margin="0, 0, 0, 0"
                                             Padding="12,6"
                                             BackgroundColor="{StaticResource primary-outline}"
                                             BorderColor="{StaticResource primary-outline}"
@@ -84,6 +85,21 @@
                                                 Text="Detalles"/>
                                             <Frame.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="onDetailClicked"/>
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                        <Frame
+                                            ClassId="{Binding Id}"
+                                            Grid.Row="3" Grid.Column="1"
+                                            Padding="12,6"
+                                            BackgroundColor="{StaticResource danger-outline}"
+                                            BorderColor="{StaticResource danger-outline}"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center">
+                                            <Label
+                                                TextColor="{StaticResource danger}"
+                                                Text="Quitar"/>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="onRemoveClicked"/>
                                             </Frame.GestureRecognizers>
                                         </Frame>
 

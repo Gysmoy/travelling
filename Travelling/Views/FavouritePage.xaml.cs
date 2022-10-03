@@ -51,5 +51,11 @@ namespace Travelling.Views
             FavoritesModel.Clean();
             onRefresh();
         }
+
+        private void onRemoveClicked(object sender, EventArgs e)
+        {
+            FavoritesModel.Remove(((Frame)sender).ClassId);
+            onRefresh();
+        }
     }
 }
